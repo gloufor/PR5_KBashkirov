@@ -1,0 +1,67 @@
+﻿<Window x:Class="Bank.View.CalculateIncome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bank.View"
+        mc:Ignorable="d"
+        Title="CalculateIncome" Height="600" Width="800">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Рассчитать доход" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="26" FontWeight="SemiBold"></TextBlock>
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <TextBlock Text="Сумма" FontSize="18" Margin="10,0,10,0"></TextBlock>
+            <TextBox x:Name="sumTextBox" FontSize="20" Margin="10,5,10,0" PreviewTextInput="sumTextBox_PreviewTextInput"></TextBox>
+            <Slider x:Name="sumSlider" Maximum="10000000" Minimum="1000" Margin="10,10,10,0" TickPlacement="BottomRight"  Ticks="1000, 1000000, 5000000, 10000000"></Slider>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="2">
+            <TextBlock Text="Срок" FontSize="18" Margin="10,0,10,0"></TextBlock>
+            <TextBox x:Name="termTextBox" FontSize="20" Margin="10,5,10,0" PreviewTextInput="termTextBox_PreviewTextInput"></TextBox>
+            <Slider x:Name="termSlider" Maximum="1825" Minimum="30" Margin="10,10,10,0" TickPlacement="BottomRight"  Ticks="30, 365, 730, 1825"></Slider>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="3">
+            <TextBlock Text="Ежемесячное пополнение" FontSize="18" Margin="10,0,10,0"></TextBlock>
+            <TextBox x:Name="replenishmentTextBox" FontSize="20" Margin="10,5,10,0" PreviewTextInput="replenishmentTextBox_PreviewTextInput"></TextBox>
+            <Slider x:Name="replenishmentSlider" Minimum="0" Maximum="5000000"  Margin="10,10,10,0" TickPlacement="BottomRight"  Ticks="0, 2500000, 5000000"></Slider>
+        </StackPanel>
+        <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" Margin="10,0,10,10">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="50" Color="Black"></DropShadowEffect>
+            </Rectangle.Effect>
+            
+            <Rectangle.Fill>
+                <SolidColorBrush Color="White"></SolidColorBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="30,10,0,0" Orientation="Vertical" HorizontalAlignment="Left">
+            <TextBlock Text="Стабильный" FontSize="26"></TextBlock>
+            <TextBlock Text="Доход:" FontSize="22"></TextBlock>
+            <TextBox Text="1233223 рублей." FontSize="24" IsReadOnly="True" Name="stablePlanTextBox" Width="330" Visibility="Hidden"></TextBox>
+            <TextBlock Text="План доступен только от срока в 3 месяца" FontSize="16" Name="termStable"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="30, 10, 0, 0" Orientation="Vertical" HorizontalAlignment="Left">
+            <TextBlock Text="Оптимальный" FontSize="26"></TextBlock>
+            <TextBlock Text="Доход:" FontSize="22"></TextBlock>
+            <TextBox Text="1233223 рублей." FontSize="24" IsReadOnly="True" Name="optimalPlanTextBox" Width="330" Visibility="Hidden"></TextBox>
+            <TextBlock Text="План доступен только от срока в 6 месяцев" FontSize="16" Name="termOptimal"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1" Margin="30, 10, 0, 0" Orientation="Vertical" HorizontalAlignment="Left">
+            <TextBlock Text="Стандарт" FontSize="26"></TextBlock>
+            <TextBlock Text="Доход:" FontSize="22"></TextBlock>
+            <TextBox Text="1233223 рублей." FontSize="24" IsReadOnly="True" Name="standartPlanTextBox" Width="330" Visibility="Hidden"></TextBox>
+            <TextBlock Text="План доступен только от срока в 3 месяца" FontSize="16" x:Name="termStandart"></TextBlock>
+        </StackPanel>
+        <Button x:Name="compareOptionButton" Grid.Column="1" Grid.Row="4" Margin="20,0,20,10" Content="Сравнить параметры" FontSize="18" VerticalContentAlignment="Center" Click="compareOptionButton_Click"></Button>
+    </Grid>
+</Window>
